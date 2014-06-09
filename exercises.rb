@@ -1,3 +1,4 @@
+# Worked on by Stephen Hughes and Patrick Meaney.
 
 module Exercises
   # Exercise 0

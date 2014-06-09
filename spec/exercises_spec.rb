@@ -1,3 +1,5 @@
+# Worked on by Stephen Hughes and Patrick Meaney.
+
 #require 'pry-debugger'
 require './exercises.rb'
 #require 'spec_helper'
