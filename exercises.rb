@@ -1,5 +1,7 @@
 # Worked on by Stephen Hughes and Patrick Meaney.
 
+require 'pry-byebug'
+
 module Exercises
   # Exercise 0
   #  - Triples a given string `str`
@@ -161,7 +163,7 @@ class RPS
 end
 
 
-require 'io/console'
+#require 'io/console'
 class RPSPlayer
   # (No specs are required for RPSPlayer)
   #
@@ -173,8 +175,12 @@ class RPSPlayer
   # lets both players play the game.
   #
   # When the game ends, ask if the player wants to play again.
-  def start
-
+def start
+    puts "Name of player 1:"
+    player1 = gets.chomp
+    puts "Name of player 2:"
+    player2 = gets.chomp
+    game = RPS.new(player1, player2)
     # TODO
 
     # PRO TIP: Instead of using plain `gets` for grabbing a player's
@@ -182,6 +188,24 @@ class RPSPlayer
     #          what the player is typing! :D
     # This is also why we needed to require 'io/console'
     # move = STDIN.noecho(&:gets)
+    while (true)
+      puts "Player 1 move: "
+      move1 = STDIN.noecho(&:gets).chomp
+      puts "Player 2 move: "
+      move2 = STDIN.noecho(&:gets).chomp
+      # move1.gsub("\n","")
+      # move2.gsub("\n","")
+      a = game.play(move1, move2)
+      # binding.pry
+      if a == "Game is already over"
+        puts "Game is aleady over"
+        break
+      elsif a == "Tie"
+        puts "That round was a tie with both players throwing #{move1}"
+      else
+        puts "#{a} won that round"
+      end
+    end      
   end
 end
 
